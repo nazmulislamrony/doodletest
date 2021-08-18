@@ -60,14 +60,11 @@ public class ShowCategoryActivity extends AppCompatActivity {
                                 // create a JSONObject for fetching single user data
                                 subcat = new ArrayList<>();
                                 JSONObject userDetail = userArray.getJSONObject(i);
-                                String category_id = userDetail.getString("category_id");
                                 String category_name = userDetail.getString("category_name");
-                                Parent parent = new Parent(category_id, category_name);
                                 parentlist.add(category_name);
                                 JSONArray jArray1 = userDetail.getJSONArray("subcatg");
                                 for (int t = 0; t < jArray1.length(); t++) {
                                     JSONObject json_data1 = jArray1.getJSONObject(t);
-                                    String sub_category_id = json_data1.getString("sub_category_id");
                                     String sub_category_name = json_data1.getString("sub_category_name");
                                     subcat.add(sub_category_name);
                                     childlist.put(parentlist.get(i),subcat);
@@ -75,7 +72,6 @@ public class ShowCategoryActivity extends AppCompatActivity {
                             }
 
                             listAdapter = new ExpandableListAdapter(ShowCategoryActivity.this, parentlist, childlist);
-
                             // setting list adapter
                             expListView.setAdapter(listAdapter);
 
